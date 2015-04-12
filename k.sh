@@ -17,10 +17,17 @@ k () {
              A=o_almost_all -almost-all=o_almost_all \
              d=o_directory -directory=o_directory \
              h=o_human -human=o_human \
+             H=o_no_human -no-human=o_no_human \
              -si=o_si \
              n=o_no_directory -no-directory=o_no_directory \
              -no-vcs=o_no_vcs \
              -help=o_help
+
+  if [[ "$o_no_human" == "" ]]
+  then
+    o_human=h
+  fi
+
 
   # Print Help if bad usage, or they asked for it
   if [[ $? != 0 || "$o_help" != "" ]]
@@ -31,7 +38,7 @@ k () {
     print -u2 "\t-A      --almost-all    list all except . and .."
     print -u2 "\t-d      --directory     list only directories"
     print -u2 "\t-n      --no-directory  do not list directories"
-    print -u2 "\t-h      --human         show filesizes in human-readable format"
+    print -u2 "\t-H      --no-human      do not show filesizes in human-readable format"
     print -u2 "\t        --si            with -h, use powers of 1000 not 1024"
     print -u2 "\t        --no-vcs        do not get VCS status (much faster)"
     print -u2 "\t        --help          show this help"
