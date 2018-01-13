@@ -483,10 +483,10 @@ k () {
             STATUS=$(command git status --porcelain --ignored --untracked-files=normal $GIT_TOPLEVEL/${${${NAME:a}##$GIT_TOPLEVEL}#*/})
           fi
           STATUS=${STATUS[1,2]}
-            if [[ $STATUS == ' M' ]]; then REPOMARKER=$'\e[0;31m+\e[0m';     # Tracked & Dirty
+            if [[ $STATUS == ' M' ]]; then REPOMARKER=$'\e[38;5;214mM\e[0m';     # Tracked & Dirty
           elif [[ $STATUS == 'M ' ]]; then REPOMARKER=$'\e[38;5;082m+\e[0m'; # Tracked & Dirty & Added
-          elif [[ $STATUS == '??' ]]; then REPOMARKER=$'\e[38;5;214m+\e[0m'; # Untracked
-          elif [[ $STATUS == '!!' ]]; then REPOMARKER=$'\e[38;5;238m|\e[0m'; # Ignored
+          elif [[ $STATUS == '??' ]]; then REPOMARKER=$'\e[38;5;248m?\e[0m'; # Untracked
+          elif [[ $STATUS == '!!' ]]; then REPOMARKER=$'\e[38;5;238m-\e[0m'; # Ignored
           elif [[ $STATUS == 'A ' ]]; then REPOMARKER=$'\e[38;5;082m+\e[0m'; # Added
           else                             REPOMARKER=$'\e[38;5;082m|\e[0m'; # Good
           fi
